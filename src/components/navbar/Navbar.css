@@ -4,12 +4,16 @@
   box-sizing: border-box;
 }
 nav {
+  position: fixed;
+  top: 0%;
+  z-index: 100;
   width: 100%;
   height: 60px;
   color:white;
   background-color: #212529;
 }
 .nav_box {
+  
   width: 80%;
   margin: auto;
   display: flex;
@@ -29,7 +33,6 @@ nav {
 .size{
   background-color:#fe7f2d;
   color:white;
-  /* margin: 5px; */
   padding: 2px;
   font-size:large;
 

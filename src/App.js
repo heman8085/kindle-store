@@ -9,7 +9,6 @@ function App() {
   const [cart, setCart] = useState([]);
   const [warning, setWarning] = useState(false);
 
-  
   const addToCartHandler = (item) => {
     let isPresent = false;
     cart.forEach((product) => {
@@ -25,28 +24,27 @@ function App() {
     setCart([...cart, item]);
   };
 
-const handleChange = (item, change) => {
-  const updatedCart = cart
-    .map((cartItem) => {
-      if (cartItem.id === item.id) {
-        const newAmount = Math.max(0, cartItem.amount + change); // Ensure amount doesn't go below 0
-        if (newAmount < 1) {
-          // If amount goes below 1, remove the item from the cart
-          return null;
-        } else {
-          return {
-            ...cartItem,
-            amount: newAmount,
-          };
+  const handleChange = (item, change) => {
+    const updatedCart = cart
+      .map((cartItem) => {
+        if (cartItem.id === item.id) {
+          const newAmount = Math.max(0, cartItem.amount + change); // Ensure amount doesn't go below 0
+          if (newAmount < 1) {
+            // If amount goes below 1, remove the item from the cart
+            return null;
+          } else {
+            return {
+              ...cartItem,
+              amount: newAmount,
+            };
+          }
         }
-      }
-      return cartItem;
-    })
-    .filter(Boolean); // Filter out null values (removed items)
+        return cartItem;
+      })
+      .filter(Boolean); // Filter out null values (removed items)
 
-  setCart(updatedCart);
-};
-
+    setCart(updatedCart);
+  };
 
   return (
     <React.Fragment>
@@ -54,7 +52,7 @@ const handleChange = (item, change) => {
       {show ? (
         <Amazon addToCartHandler={addToCartHandler} />
       ) : (
-          <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
+        <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
       )}
 
       {warning && (
