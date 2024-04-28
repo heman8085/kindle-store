@@ -1,16 +1,34 @@
-import React from "react";
-import './Navbar.css';
+import React,{ useContext } from "react";
+import "./Navbar.css";
+import { Link } from "react-router-dom";
+import { AmazonContext } from "../store/AmazonContext";
 
-const Navbar = ({size,setShow}) => {
+const Navbar = () => {
+
+  const { size } = useContext(AmazonContext);
+  
   return (
-    <nav>
-      <div className="nav_box">
-        <span className="my_shop" onClick={() => setShow(true)}>Amazon Kindle</span>
-        <div className="cart" onClick={() => setShow(false)}>
-          <span>
-            <i className="fas fa-cart-plus"></i>
-          </span>
-          <span className="size">{size}</span>
+    <nav className="navbar">
+      <div className="nav-container">
+        <Link to="/" className="logo">
+          Amazon Kindle
+        </Link>
+        <div className="nav-links">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+          <Link to="/about" className="nav-link">
+            About
+          </Link>
+          <Link to="/contact" className="nav-link">
+            Contact
+          </Link>
+        </div>
+        <div className="cart-container">
+          <Link to="/cart" className="cart-icon">
+            <i className="fas fa-shopping-cart"></i>
+          </Link>
+          <span className="cart-size">{size}</span>
         </div>
       </div>
     </nav>

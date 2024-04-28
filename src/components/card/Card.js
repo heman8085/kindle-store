@@ -13,7 +13,7 @@ const Card = ({ item , addToCartHandler}) => {
           <div className='details'>
               <p>{item.title}</p>
               <p>{item.author}</p>
-              <p>Price - {item.price}</p>
+              <h4>Price: Rs.{item.price}</h4>
               <button className='btn' onClick={() => addToCartHandler(item)}>Add to Cart</button>
           </div>
     </div>
